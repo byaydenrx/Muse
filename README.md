@@ -21,15 +21,21 @@ Reference boards for designers. Collect images from Finder, any browser, Pintere
 
 ## Install
 
+**Download:** get [Muse.zip](https://github.com/byaydenrx/Muse/releases/latest/download/Muse.zip) from the [latest release](https://github.com/byaydenrx/Muse/releases/latest) (Apple silicon and Intel, macOS 26 or later).
+
+1. Double-click `Muse.zip` to unzip it, and drag **Muse** into your Applications folder.
+2. Open it. Because the app isn't notarized by Apple, macOS says it can't verify it: click **Done**.
+3. Open System Settings › Privacy & Security, scroll down to “Muse was blocked”, click **Open Anyway** and confirm. You only do this once.
+
+**Or build it yourself** (no Gatekeeper prompt), with Swift 6 from the Xcode Command Line Tools (`xcode-select --install`) or Xcode:
+
 ```sh
-git clone https://github.com/Byaydenrx/Muse.git
+git clone https://github.com/byaydenrx/Muse.git
 cd Muse
 ./install.sh
 ```
 
-`install.sh` builds Muse from source, copies it to `~/Applications` and opens it. To only build: `./build.sh` makes `build/Muse.app` (universal: Apple silicon and Intel). Either needs Swift 6 from the Xcode Command Line Tools (`xcode-select --install`) or Xcode.
-
-Downloaded builds aren't notarized, so macOS blocks them the first time: System Settings › Privacy & Security › **Open Anyway**. Building it yourself avoids that.
+`install.sh` builds Muse, copies it to `~/Applications` and opens it. `./build.sh` only builds `build/Muse.app`.
 
 ## Data
 
