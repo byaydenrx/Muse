@@ -2,6 +2,8 @@
 
 Reference boards for designers. Collect images from Finder, any browser, Pinterest, the clipboard or a screenshot onto an infinite board, arrange them into sections, and export the board to a layered Photoshop file.
 
+![A Muse board with sections, captions, a title and a palette card](docs/board.png)
+
 - Infinite dark canvas: pan, zoom, select, move, scale (Photoshop-style handles and modifiers).
 - Tools with Photoshop keys: **V** move, **H** / Space hand, **Z** zoom, **M** section, **T** type, **I** eyedropper (with Pigment).
 - Sections (become layer groups in the PSD), text, image captions, layer names, Layers panel (F7), Image Info (⌘I) with tags and notes.
@@ -44,7 +46,7 @@ Help › Keyboard Shortcuts (⌘/) lists everything. Library (⌘L): arrows move
 
 ## Test modes
 
-`Muse --selftest out.png <images> [--psd out.psd]` (imports, lays out, renders and exports using temp folders unless `MUSE_ROOT` / `PIGMENT_ROOT` are set).
+`Muse --selftest out.png <images> [--psd out.psd]` (imports, lays out, renders and exports using temp folders unless `MUSE_ROOT` / `PIGMENT_ROOT` are set), `--shot out.png` (draws the window into a PNG, without the translucent sidebar, then quits).
 
 ## License
 

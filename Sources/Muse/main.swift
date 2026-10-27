@@ -57,6 +57,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
         NSApp.mainMenu = buildMenu()
 
+        // Test mode: --shot <png> draws the window into a PNG once it has settled, then quits (no Screen Recording needed).
+        if let i = CommandLine.arguments.firstIndex(of: "--shot"), i + 1 < CommandLine.arguments.count {
+            let path = CommandLine.arguments[i + 1]
+            // Translucent panels don't draw offscreen, so the shot shows the board on its own.
+            ui.sidebarVisible = false
+            ui.toolbarVisible = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+                guard let self, let view = self.window.contentView?.superview ?? self.window.contentView,
+                      let rep = view.bitmapImageRepForCachingDisplay(in: view.bounds) else { exit(1) }
+                view.cacheDisplay(in: view.bounds, to: rep)
+                try? rep.representation(using: .png, properties: [:])?.write(to: URL(fileURLWithPath: path))
+                print("shot \(path)")
+                exit(0)
+            }
+        }
+
         // While the Library is up it gets the keys (arrows, Space, Return, typing to search) wherever focus is,
         // unless a text field is being edited.
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
